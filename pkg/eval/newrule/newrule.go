@@ -123,7 +123,7 @@ func loadValuationRules() ValuationRules {
 		"菲林斯":   {Name: "菲林斯", Prices: [7]float64{5, 10, 50, 60, 70, 200, 500}, SpecializedWeapon: "血染荒城"},
 		"奈芙尔":   {Name: "奈芙尔", Prices: [7]float64{5, 10, 50, 60, 70, 200, 700}, SpecializedWeapon: "真语秘匣"},  // 600->700
 		"哥伦比娅":  {Name: "哥伦比娅", Prices: [7]float64{5, 10, 50, 60, 70, 200, 700}, SpecializedWeapon: "帷间夜曲"}, // 新增
-		"兹白":    {Name: "兹白", Prices: [7]float64{5, 10, 50, 60, 70, 200, 900}, SpecializedWeapon: "朏魄含光"},   // 新增, C5纠正为200
+		"兹白":    {Name: "兹白", Prices: [7]float64{5, 10, 50, 60, 70, 200, 700}, SpecializedWeapon: "朏魄含光"},
 	}
 
 	// 武器价格表
@@ -216,6 +216,7 @@ func loadValuationRules() ValuationRules {
 	// 特殊规则相关角色列表
 	// 特殊规则相关角色列表
 	r.HotC6Chars = []string{"杜林", "奈芙尔", "菈乌玛", "菲林斯", "基尼奇", "千织", "瓦雷莎", "克洛琳德", "玛拉妮", "哥伦比娅", "兹白"}
+	r.SpecialC2C5Chars = []string{"茜特菈莉", "希诺宁", "爱可菲"}
 
 	return r
 }
@@ -291,14 +292,12 @@ func calculateBaseValue(account eval.Assets, bestRules []ComboRule) (applicableV
 	premiumC6Chars := make(map[string]bool)
 	for _, combo := range bestRules {
 		for _, req := range combo.RequiredChars {
-			if req.MinConst == 6 {
-				if c, ok := account.Characters[req.Name]; ok && c == 6 {
-					premiumC6Chars[req.Name] = true
-				}
+			if c, ok := account.Characters[req.Name]; ok && c == 6 {
+				premiumC6Chars[req.Name] = true
 			}
 		}
 	}
-	if len(bestRules) > 0 {
+	if hasMaxConstCombo(bestRules) {
 		for _, hotChar := range rules.HotC6Chars {
 			if c, ok := account.Characters[hotChar]; ok && c == 6 {
 				premiumC6Chars[hotChar] = true
@@ -492,6 +491,18 @@ func applyCharacterCountMultiplier(applicableValue float64, charCount int) (floa
 	return applicableValue, fmt.Sprintf("账号有 %d 个五星角色，未找到对应的乘数规则，价值不变。\n", charCount)
 }
 
+// hasMaxConstCombo 判断组合列表中是否包含要求6命的组合
+func hasMaxConstCombo(bestRules []ComboRule) bool {
+	for _, combo := range bestRules {
+		for _, req := range combo.RequiredChars {
+			if req.MinConst == 6 {
+				return true
+			}
+		}
+	}
+	return false
+}
+
 // applySpecialRules 应用特殊规则增益
 func applySpecialRules(account eval.Assets, bestRules []ComboRule) (float64, string) {
 	var totalBonus float64
@@ -530,7 +541,7 @@ func applySpecialRules(account eval.Assets, bestRules []ComboRule) (float64, str
 		}
 	}
 
-	if len(bestRules) > 0 {
+	if hasMaxConstCombo(bestRules) {
 		// Rule: Hot C6 Characters [cite: 386-387]
 		for _, hotChar := range rules.HotC6Chars {
 			if constellation, ok := account.Characters[hotChar]; ok && constellation == 6 {
