@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/sdojjy/genshin-value-rule/pkg/eval"
+	"github.com/sdojjy/go-license-system/pkg/eval"
 )
 
 func TestCalculateValuation_Example(t *testing.T) {
