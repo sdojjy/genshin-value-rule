@@ -62,7 +62,8 @@ type ValuationRules struct {
 	}
 
 	// 特殊规则相关角色列表
-	HotC6Chars       []string
+	HotC6CharsT1     []string // 第一梯队 (+300, 但命中月国满命溢价时不再+300)
+	HotC6CharsT2     []string // 第二梯队 (+200)
 	SpecialC2C5Chars []string
 }
 
@@ -74,8 +75,8 @@ func loadValuationRules() ValuationRules {
 	r := ValuationRules{}
 	// 角色价格表 [cite: 22, 228]
 	r.Characters = map[string]CharacterInfo{
-		"杜林":    {Name: "杜林", Prices: [7]float64{5, 10, 50, 60, 70, 200, 600}, SpecializedWeapon: "黑蚀"},
-		"伊涅芙":   {Name: "伊涅芙", Prices: [7]float64{5, 10, 30, 35, 40, 100, 500}, SpecializedWeapon: "支离轮光"}, // 600->500
+		"杜林":    {Name: "杜林", Prices: [7]float64{5, 10, 80, 90, 100, 200, 600}, SpecializedWeapon: "黑蚀"},
+		"伊涅芙":   {Name: "伊涅芙", Prices: [7]float64{5, 10, 80, 90, 40, 100, 500}, SpecializedWeapon: "支离轮光"},
 		"丝柯克":   {Name: "丝柯克", Prices: [7]float64{5, 10, 80, 90, 100, 200, 500}, SpecializedWeapon: "苍耀"},  // 550->500
 		"爱可菲":   {Name: "爱可菲", Prices: [7]float64{5, 10, 50, 55, 60, 100, 400}, SpecializedWeapon: "香韵奏者"},
 		"瓦雷莎":   {Name: "瓦雷莎", Prices: [7]float64{5, 10, 80, 90, 100, 200, 600}, SpecializedWeapon: "溢彩心念"}, // 800->600
@@ -119,11 +120,12 @@ func loadValuationRules() ValuationRules {
 		"魈":     {Name: "魈", Prices: [7]float64{5, 10, 15, 20, 25, 30, 150}, SpecializedWeapon: "和璞鸢"},
 		"可莉":    {Name: "可莉", Prices: [7]float64{5, 10, 15, 20, 25, 30, 100}, SpecializedWeapon: "四风原典"},
 		"温迪":    {Name: "温迪", Prices: [7]float64{5, 10, 15, 20, 25, 30, 180}, SpecializedWeapon: "终末嗟叹之诗"},
-		"菈乌玛":   {Name: "菈乌玛", Prices: [7]float64{5, 10, 50, 60, 70, 200, 400}, SpecializedWeapon: "纺夜天镜"},
-		"菲林斯":   {Name: "菲林斯", Prices: [7]float64{5, 10, 50, 60, 70, 200, 500}, SpecializedWeapon: "血染荒城"},
-		"奈芙尔":   {Name: "奈芙尔", Prices: [7]float64{5, 10, 50, 60, 70, 200, 700}, SpecializedWeapon: "真语秘匣"},  // 600->700
-		"哥伦比娅":  {Name: "哥伦比娅", Prices: [7]float64{5, 10, 50, 60, 70, 200, 700}, SpecializedWeapon: "帷间夜曲"}, // 新增
-		"兹白":    {Name: "兹白", Prices: [7]float64{5, 10, 50, 60, 70, 200, 700}, SpecializedWeapon: "朏魄含光"},
+		"菈乌玛":   {Name: "菈乌玛", Prices: [7]float64{5, 10, 80, 90, 100, 200, 400}, SpecializedWeapon: "纺夜天镜"},
+		"菲林斯":   {Name: "菲林斯", Prices: [7]float64{5, 10, 80, 90, 100, 200, 550}, SpecializedWeapon: "血染荒城"},
+		"奈芙尔":   {Name: "奈芙尔", Prices: [7]float64{5, 10, 80, 90, 100, 200, 700}, SpecializedWeapon: "真语秘匣"},
+		"哥伦比娅":  {Name: "哥伦比娅", Prices: [7]float64{5, 10, 80, 90, 100, 200, 650}, SpecializedWeapon: "帷间夜曲"},
+		"兹白":    {Name: "兹白", Prices: [7]float64{5, 10, 80, 90, 100, 200, 700}, SpecializedWeapon: "朏魄含光"},
+		"法尔伽":   {Name: "法尔伽", Prices: [7]float64{5, 10, 80, 90, 100, 200, 700}, SpecializedWeapon: "狼的武功歌"},
 	}
 
 	// 武器价格表
@@ -177,7 +179,8 @@ func loadValuationRules() ValuationRules {
 		"血染荒城":    {Name: "血染荒城", Prices: [5]float64{5, 10, 15, 20, 250}},
 		"真语秘匣":    {Name: "真语秘匣", Prices: [5]float64{5, 10, 15, 20, 200}},
 		"帷间夜曲":    {Name: "帷间夜曲", Prices: [5]float64{5, 10, 15, 20, 200}}, // 新增
-		"朏魄含光":    {Name: "朏魄含光", Prices: [5]float64{5, 10, 15, 20, 250}}, // 新增
+		"朏魄含光":    {Name: "朏魄含光", Prices: [5]float64{5, 10, 15, 20, 250}},
+		"狼的武功歌":   {Name: "狼的武功歌", Prices: [5]float64{5, 10, 15, 20, 200}},
 	}
 
 	// 完整溢价组合 [cite: 25-175, 177-184]
@@ -214,9 +217,11 @@ func loadValuationRules() ValuationRules {
 	}
 
 	// 特殊规则相关角色列表
-	// 特殊规则相关角色列表
-	r.HotC6Chars = []string{"杜林", "奈芙尔", "菈乌玛", "菲林斯", "基尼奇", "千织", "瓦雷莎", "克洛琳德", "玛拉妮", "哥伦比娅", "兹白"}
-	r.SpecialC2C5Chars = []string{"茜特菈莉", "希诺宁", "爱可菲"}
+	// 第一梯队热门6命角色 (+300，但命中月国满命溢价时不再+300)
+	r.HotC6CharsT1 = []string{"杜林", "奈芙尔", "菈乌玛", "菲林斯", "哥伦比娅", "兹白", "法尔伽"}
+	// 第二梯队热门6命角色 (+200)
+	r.HotC6CharsT2 = []string{"基尼奇", "千织", "瓦雷莎", "克洛琳德", "玛拉妮"}
+	r.SpecialC2C5Chars = []string{"茜特菈莉", "希诺宁", "爱可菲", "哥伦比娅", "菈乌玛", "伊涅芙"}
 
 	return r
 }
@@ -298,7 +303,12 @@ func calculateBaseValue(account eval.Assets, bestRules []ComboRule) (applicableV
 		}
 	}
 	if hasMaxConstCombo(bestRules) {
-		for _, hotChar := range rules.HotC6Chars {
+		for _, hotChar := range rules.HotC6CharsT1 {
+			if c, ok := account.Characters[hotChar]; ok && c == 6 {
+				premiumC6Chars[hotChar] = true
+			}
+		}
+		for _, hotChar := range rules.HotC6CharsT2 {
 			if c, ok := account.Characters[hotChar]; ok && c == 6 {
 				premiumC6Chars[hotChar] = true
 			}
@@ -513,7 +523,6 @@ func applySpecialRules(account eval.Assets, bestRules []ComboRule) (float64, str
 		for _, req := range combo.RequiredChars {
 			if req.MinConst == 6 {
 				isMaxConstellationCombo = true
-
 				break
 			}
 		}
@@ -542,12 +551,42 @@ func applySpecialRules(account eval.Assets, bestRules []ComboRule) (float64, str
 	}
 
 	if hasMaxConstCombo(bestRules) {
-		// Rule: Hot C6 Characters [cite: 386-387]
-		for _, hotChar := range rules.HotC6Chars {
-			if constellation, ok := account.Characters[hotChar]; ok && constellation == 6 {
-				totalBonus += 250
-				fmt.Fprintf(&sb, "  - 命中热门6命角色 [%s]，附加价值 +250\n", hotChar)
+		// 收集命中了月国满命溢价组合的角色
+		yueguoChars := make(map[string]bool)
+		for _, combo := range bestRules {
+			// 月国组合的特征：包含奈芙尔/菲林斯/哥伦比娅/兹白/伊涅芙/菈乌玛等月国角色的满命组合
+			isYueguoCombo := false
+			for _, req := range combo.RequiredChars {
+				if req.MinConst == 6 {
+					switch req.Name {
+					case "奈芙尔", "菲林斯", "哥伦比娅", "兹白", "伊涅芙", "菈乌玛":
+						isYueguoCombo = true
+					}
+				}
+			}
+			if isYueguoCombo {
+				for _, req := range combo.RequiredChars {
+					yueguoChars[req.Name] = true
+				}
+			}
+		}
 
+		// 第一梯队: +300，但已命中月国满命溢价组合的角色不再+300
+		for _, hotChar := range rules.HotC6CharsT1 {
+			if constellation, ok := account.Characters[hotChar]; ok && constellation == 6 {
+				if yueguoChars[hotChar] {
+					fmt.Fprintf(&sb, "  - 热门6命角色 [%s] 已命中月国满命溢价组合，不再额外+300\n", hotChar)
+				} else {
+					totalBonus += 300
+					fmt.Fprintf(&sb, "  - 命中热门6命角色 [%s]，附加价值 +300\n", hotChar)
+				}
+			}
+		}
+		// 第二梯队: +200
+		for _, hotChar := range rules.HotC6CharsT2 {
+			if constellation, ok := account.Characters[hotChar]; ok && constellation == 6 {
+				totalBonus += 200
+				fmt.Fprintf(&sb, "  - 命中热门6命角色 [%s]，附加价值 +200\n", hotChar)
 			}
 		}
 	}
