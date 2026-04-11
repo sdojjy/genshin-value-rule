@@ -77,12 +77,13 @@ func TestCalculateValuation_Example(t *testing.T) {
 	fmt.Println(result.Breakdown)
 	fmt.Printf("Final Total: %.2f\n", result.FinalTotal)
 
-	// Acceptable range due to potential interpretation differences?
-	// But based on my logic: 3130.
-	// If Kinich is 400 base: 3150.
-	// If Mavuika is 550 base: 3180.
-	// I will assert > 3000 for now and check details in output.
-	if result.FinalTotal < 3000 {
-		t.Errorf("Expected > 3000, got %.2f", result.FinalTotal)
+	// Updated for new prices:
+	// Char: 500 + 400 + 380 = 1280
+	// Weapons (doubled, hit combo): 250*2 + 150*2 + 150*2 = 500 + 300 + 300 = 1100
+	// Combo (6玛薇卡+6茜特菈莉): 300
+	// Special (6基尼奇 HotC6T2): +200
+	// Total = 1280 + 1100 + 300 + 200 = 2880
+	if result.FinalTotal < 2800 {
+		t.Errorf("Expected > 2800, got %.2f", result.FinalTotal)
 	}
 }

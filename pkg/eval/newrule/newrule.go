@@ -75,7 +75,7 @@ func loadValuationRules() ValuationRules {
 	r := ValuationRules{}
 	// 角色价格表 [cite: 22, 228]
 	r.Characters = map[string]CharacterInfo{
-		"杜林":    {Name: "杜林", Prices: [7]float64{5, 10, 80, 90, 100, 200, 600}, SpecializedWeapon: "黑蚀"},
+		"杜林":    {Name: "杜林", Prices: [7]float64{5, 10, 80, 90, 100, 200, 500}, SpecializedWeapon: "黑蚀"},
 		"伊涅芙":   {Name: "伊涅芙", Prices: [7]float64{5, 10, 80, 90, 40, 100, 500}, SpecializedWeapon: "支离轮光"},
 		"丝柯克":   {Name: "丝柯克", Prices: [7]float64{5, 10, 80, 90, 100, 200, 500}, SpecializedWeapon: "苍耀"},  // 550->500
 		"爱可菲":   {Name: "爱可菲", Prices: [7]float64{5, 10, 50, 55, 60, 100, 400}, SpecializedWeapon: "香韵奏者"},
@@ -90,7 +90,7 @@ func loadValuationRules() ValuationRules {
 		"克洛琳德":  {Name: "克洛琳德", Prices: [7]float64{5, 10, 25, 30, 35, 50, 360}, SpecializedWeapon: "赦罪"},
 		"阿蕾奇诺":  {Name: "阿蕾奇诺", Prices: [7]float64{5, 10, 25, 30, 35, 100, 380}, SpecializedWeapon: "赤月之形"},
 		"希格雯":   {Name: "希格雯", Prices: [7]float64{5, 10, 15, 20, 25, 50, 200}, SpecializedWeapon: "白雨心弦"},
-		"千织":    {Name: "千织", Prices: [7]float64{5, 10, 15, 20, 25, 30, 360}, SpecializedWeapon: "有乐御簾切"},
+		"千织":    {Name: "千织", Prices: [7]float64{5, 10, 15, 20, 25, 30, 300}, SpecializedWeapon: "有乐御簾切"},
 		"闲云":    {Name: "闲云", Prices: [7]float64{5, 10, 25, 30, 35, 40, 200}, SpecializedWeapon: "鹤鸣余音"},
 		"娜维娅":   {Name: "娜维娅", Prices: [7]float64{5, 10, 15, 20, 25, 30, 200}, SpecializedWeapon: "裁断"},
 		"芙宁娜":   {Name: "芙宁娜", Prices: [7]float64{5, 10, 30, 35, 40, 80, 250}, SpecializedWeapon: "静水流涌之辉"},
@@ -121,11 +121,12 @@ func loadValuationRules() ValuationRules {
 		"可莉":    {Name: "可莉", Prices: [7]float64{5, 10, 15, 20, 25, 30, 100}, SpecializedWeapon: "四风原典"},
 		"温迪":    {Name: "温迪", Prices: [7]float64{5, 10, 15, 20, 25, 30, 180}, SpecializedWeapon: "终末嗟叹之诗"},
 		"菈乌玛":   {Name: "菈乌玛", Prices: [7]float64{5, 10, 80, 90, 100, 200, 400}, SpecializedWeapon: "纺夜天镜"},
-		"菲林斯":   {Name: "菲林斯", Prices: [7]float64{5, 10, 80, 90, 100, 200, 550}, SpecializedWeapon: "血染荒城"},
-		"奈芙尔":   {Name: "奈芙尔", Prices: [7]float64{5, 10, 80, 90, 100, 200, 700}, SpecializedWeapon: "真语秘匣"},
-		"哥伦比娅":  {Name: "哥伦比娅", Prices: [7]float64{5, 10, 80, 90, 100, 200, 650}, SpecializedWeapon: "帷间夜曲"},
-		"兹白":    {Name: "兹白", Prices: [7]float64{5, 10, 80, 90, 100, 200, 700}, SpecializedWeapon: "朏魄含光"},
-		"法尔伽":   {Name: "法尔伽", Prices: [7]float64{5, 10, 80, 90, 100, 200, 700}, SpecializedWeapon: "狼的武功歌"},
+		"菲林斯":   {Name: "菲林斯", Prices: [7]float64{5, 10, 80, 90, 100, 200, 500}, SpecializedWeapon: "血染荒城"},
+		"奈芙尔":   {Name: "奈芙尔", Prices: [7]float64{5, 10, 80, 90, 100, 200, 650}, SpecializedWeapon: "真语秘匣"},
+		"哥伦比娅":  {Name: "哥伦比娅", Prices: [7]float64{5, 10, 80, 90, 100, 200, 500}, SpecializedWeapon: "帷间夜曲"},
+		"兹白":    {Name: "兹白", Prices: [7]float64{5, 10, 80, 90, 100, 200, 550}, SpecializedWeapon: "朏魄含光"},
+		"法尔伽":   {Name: "法尔伽", Prices: [7]float64{5, 10, 80, 90, 100, 200, 600}, SpecializedWeapon: "狼的武功歌"},
+		"莉奈娅":   {Name: "莉奈娅", Prices: [7]float64{5, 10, 80, 90, 100, 200, 500}, SpecializedWeapon: "霜结的誓金枝"},
 	}
 
 	// 武器价格表
@@ -181,6 +182,7 @@ func loadValuationRules() ValuationRules {
 		"帷间夜曲":    {Name: "帷间夜曲", Prices: [5]float64{5, 10, 15, 20, 200}}, // 新增
 		"朏魄含光":    {Name: "朏魄含光", Prices: [5]float64{5, 10, 15, 20, 250}},
 		"狼的武功歌":   {Name: "狼的武功歌", Prices: [5]float64{5, 10, 15, 20, 200}},
+		"霜结的誓金枝":  {Name: "霜结的誓金枝", Prices: [5]float64{5, 10, 15, 20, 200}},
 	}
 
 	// 完整溢价组合 [cite: 25-175, 177-184]
@@ -206,9 +208,9 @@ func loadValuationRules() ValuationRules {
 		MinFates int
 		Price    float64
 	}{
-		{1000, 1.8},
-		{900, 1.7},
-		{800, 1.6},
+		{1000, 1.7},
+		{900, 1.6},
+		{800, 1.5},
 		{700, 1.4},
 		{600, 1.3},
 		{500, 1.2},
@@ -220,8 +222,8 @@ func loadValuationRules() ValuationRules {
 	// 第一梯队热门6命角色 (+300，但命中月国满命溢价时不再+300)
 	r.HotC6CharsT1 = []string{"杜林", "奈芙尔", "菈乌玛", "菲林斯", "哥伦比娅", "兹白", "法尔伽"}
 	// 第二梯队热门6命角色 (+200)
-	r.HotC6CharsT2 = []string{"基尼奇", "千织", "瓦雷莎", "克洛琳德", "玛拉妮"}
-	r.SpecialC2C5Chars = []string{"茜特菈莉", "希诺宁", "爱可菲", "哥伦比娅", "菈乌玛", "伊涅芙"}
+	r.HotC6CharsT2 = []string{"基尼奇", "瓦雷莎", "克洛琳德", "玛拉妮"}
+	r.SpecialC2C5Chars = []string{"茜特菈莉", "希诺宁", "爱可菲", "哥伦比娅", "菈乌玛", "伊涅芙", "莉奈娅"}
 
 	return r
 }
@@ -559,7 +561,7 @@ func applySpecialRules(account eval.Assets, bestRules []ComboRule) (float64, str
 			for _, req := range combo.RequiredChars {
 				if req.MinConst == 6 {
 					switch req.Name {
-					case "奈芙尔", "菲林斯", "哥伦比娅", "兹白", "伊涅芙", "菈乌玛":
+					case "奈芙尔", "菲林斯", "哥伦比娅", "兹白", "伊涅芙", "菈乌玛", "莉奈娅":
 						isYueguoCombo = true
 					}
 				}
