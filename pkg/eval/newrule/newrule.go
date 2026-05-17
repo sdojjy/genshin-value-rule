@@ -73,116 +73,118 @@ var rules = loadValuationRules()
 // loadValuationRules 初始化所有估值规则，数据源于Word文档
 func loadValuationRules() ValuationRules {
 	r := ValuationRules{}
-	// 角色价格表 [cite: 22, 228]
+	// 角色价格表
 	r.Characters = map[string]CharacterInfo{
-		"杜林":    {Name: "杜林", Prices: [7]float64{5, 10, 80, 90, 100, 200, 500}, SpecializedWeapon: "黑蚀"},
-		"伊涅芙":   {Name: "伊涅芙", Prices: [7]float64{5, 10, 80, 90, 40, 100, 500}, SpecializedWeapon: "支离轮光"},
-		"丝柯克":   {Name: "丝柯克", Prices: [7]float64{5, 10, 80, 90, 100, 200, 500}, SpecializedWeapon: "苍耀"},  // 550->500
-		"爱可菲":   {Name: "爱可菲", Prices: [7]float64{5, 10, 50, 55, 60, 100, 400}, SpecializedWeapon: "香韵奏者"},
-		"瓦雷莎":   {Name: "瓦雷莎", Prices: [7]float64{5, 10, 80, 90, 100, 200, 600}, SpecializedWeapon: "溢彩心念"}, // 800->600
-		"茜特菈莉":  {Name: "茜特菈莉", Prices: [7]float64{5, 10, 50, 55, 60, 100, 400}, SpecializedWeapon: "祭星者之望"},
-		"玛薇卡":   {Name: "玛薇卡", Prices: [7]float64{5, 10, 80, 90, 100, 200, 500}, SpecializedWeapon: "焚曜千阳"}, // 550->500
-		"恰斯卡":   {Name: "恰斯卡", Prices: [7]float64{5, 10, 50, 60, 70, 100, 600}, SpecializedWeapon: "星鹫赤羽"},  // 650->600
-		"希诺宁":   {Name: "希诺宁", Prices: [7]float64{5, 10, 50, 55, 60, 100, 300}, SpecializedWeapon: "岩峰巡歌"},
-		"基尼奇":   {Name: "基尼奇", Prices: [7]float64{5, 10, 50, 60, 70, 100, 380}, SpecializedWeapon: "山王长牙"},
-		"玛拉妮":   {Name: "玛拉妮", Prices: [7]float64{5, 10, 50, 60, 70, 100, 380}, SpecializedWeapon: "冲浪时光"},
-		"艾梅莉埃":  {Name: "艾梅莉埃", Prices: [7]float64{5, 10, 20, 25, 30, 50, 200}, SpecializedWeapon: "柔灯挽歌"},
-		"克洛琳德":  {Name: "克洛琳德", Prices: [7]float64{5, 10, 25, 30, 35, 50, 360}, SpecializedWeapon: "赦罪"},
-		"阿蕾奇诺":  {Name: "阿蕾奇诺", Prices: [7]float64{5, 10, 25, 30, 35, 100, 380}, SpecializedWeapon: "赤月之形"},
-		"希格雯":   {Name: "希格雯", Prices: [7]float64{5, 10, 15, 20, 25, 50, 200}, SpecializedWeapon: "白雨心弦"},
+		"伊涅芙":   {Name: "伊涅芙", Prices: [7]float64{6, 15, 80, 90, 100, 200, 400}, SpecializedWeapon: "支离轮光"},
+		"丝柯克":   {Name: "丝柯克", Prices: [7]float64{6, 15, 80, 90, 100, 200, 480}, SpecializedWeapon: "苍耀"},
+		"爱可菲":   {Name: "爱可菲", Prices: [7]float64{5, 10, 50, 55, 60, 100, 300}, SpecializedWeapon: "香韵奏者"},
+		"瓦雷莎":   {Name: "瓦雷莎", Prices: [7]float64{5, 10, 50, 60, 70, 150, 380}, SpecializedWeapon: "溢彩心念"},
+		"茜特菈莉":  {Name: "茜特菈莉", Prices: [7]float64{5, 10, 50, 55, 60, 100, 350}, SpecializedWeapon: "祭星者之望"},
+		"玛薇卡":   {Name: "玛薇卡", Prices: [7]float64{6, 15, 80, 90, 100, 200, 500}, SpecializedWeapon: "焚曜千阳"},
+		"恰斯卡":   {Name: "恰斯卡", Prices: [7]float64{5, 10, 50, 60, 70, 100, 500}, SpecializedWeapon: "星鹫赤羽"},
+		"希诺宁":   {Name: "希诺宁", Prices: [7]float64{5, 10, 50, 55, 60, 100, 250}, SpecializedWeapon: "岩峰巡歌"},
+		"基尼奇":   {Name: "基尼奇", Prices: [7]float64{5, 10, 50, 60, 70, 100, 300}, SpecializedWeapon: "山王长牙"},
+		"玛拉妮":   {Name: "玛拉妮", Prices: [7]float64{5, 10, 50, 60, 70, 100, 350}, SpecializedWeapon: "冲浪时光"},
+		"艾梅莉埃":  {Name: "艾梅莉埃", Prices: [7]float64{3, 6, 15, 20, 30, 50, 150}, SpecializedWeapon: "柔灯挽歌"},
+		"克洛琳德":  {Name: "克洛琳德", Prices: [7]float64{5, 10, 25, 30, 35, 50, 300}, SpecializedWeapon: "赦罪"},
+		"阿蕾奇诺":  {Name: "阿蕾奇诺", Prices: [7]float64{5, 10, 25, 30, 35, 100, 300}, SpecializedWeapon: "赤月之形"},
+		"希格雯":   {Name: "希格雯", Prices: [7]float64{3, 6, 15, 20, 25, 50, 180}, SpecializedWeapon: "白雨心弦"},
 		"千织":    {Name: "千织", Prices: [7]float64{5, 10, 15, 20, 25, 30, 300}, SpecializedWeapon: "有乐御簾切"},
-		"闲云":    {Name: "闲云", Prices: [7]float64{5, 10, 25, 30, 35, 40, 200}, SpecializedWeapon: "鹤鸣余音"},
-		"娜维娅":   {Name: "娜维娅", Prices: [7]float64{5, 10, 15, 20, 25, 30, 200}, SpecializedWeapon: "裁断"},
-		"芙宁娜":   {Name: "芙宁娜", Prices: [7]float64{5, 10, 30, 35, 40, 80, 250}, SpecializedWeapon: "静水流涌之辉"},
-		"那维莱特":  {Name: "那维莱特", Prices: [7]float64{5, 10, 15, 20, 25, 80, 300}, SpecializedWeapon: "万世流涌大典"},
-		"莱欧斯利":  {Name: "莱欧斯利", Prices: [7]float64{5, 10, 15, 20, 25, 30, 250}, SpecializedWeapon: "金流监督"},
-		"林尼":    {Name: "林尼", Prices: [7]float64{5, 10, 15, 20, 25, 30, 150}, SpecializedWeapon: "最初的大魔术"},
-		"白术":    {Name: "白术", Prices: [7]float64{5, 10, 15, 20, 25, 30, 150}, SpecializedWeapon: "碧落之珑"},
-		"艾尔海森":  {Name: "艾尔海森", Prices: [7]float64{5, 10, 15, 20, 25, 30, 150}, SpecializedWeapon: "裁叶萃光"},
-		"流浪者":   {Name: "流浪者", Prices: [7]float64{5, 10, 15, 20, 25, 30, 150}, SpecializedWeapon: "图莱杜拉的回忆"},
-		"纳西妲":   {Name: "纳西妲", Prices: [7]float64{5, 10, 15, 20, 25, 30, 150}, SpecializedWeapon: "千夜浮梦"},
-		"赛诺":    {Name: "赛诺", Prices: [7]float64{5, 10, 15, 20, 25, 30, 150}, SpecializedWeapon: "赤沙之杖"},
-		"妮露":    {Name: "妮露", Prices: [7]float64{5, 10, 15, 20, 25, 30, 150}, SpecializedWeapon: "圣显之钥"},
-		"神里绫人":  {Name: "神里绫人", Prices: [7]float64{5, 10, 15, 20, 25, 30, 150}, SpecializedWeapon: "波乱月白经津"},
-		"申鹤":    {Name: "申鹤", Prices: [7]float64{5, 10, 15, 20, 25, 30, 150}, SpecializedWeapon: "息灾"},
-		"夜兰":    {Name: "夜兰", Prices: [7]float64{5, 10, 15, 20, 25, 30, 150}, SpecializedWeapon: "若水"},
-		"八重神子":  {Name: "八重神子", Prices: [7]float64{5, 10, 15, 20, 25, 30, 150}, SpecializedWeapon: "神乐之真意"},
-		"荒泷一斗":  {Name: "荒泷一斗", Prices: [7]float64{5, 10, 15, 20, 25, 30, 150}, SpecializedWeapon: "赤角石溃杵"},
-		"珊瑚宫心海": {Name: "珊瑚宫心海", Prices: [7]float64{5, 10, 15, 20, 25, 30, 100}, SpecializedWeapon: "不灭月华"},
-		"雷电将军":  {Name: "雷电将军", Prices: [7]float64{5, 10, 15, 20, 25, 30, 150}, SpecializedWeapon: "薙草之稻光"},
-		"优菈":    {Name: "优菈", Prices: [7]float64{5, 10, 15, 20, 25, 30, 150}, SpecializedWeapon: "松籁响起之时"},
-		"宵宫":    {Name: "宵宫", Prices: [7]float64{5, 10, 15, 20, 25, 30, 150}, SpecializedWeapon: "飞雷之弦振"},
-		"枫原万叶":  {Name: "枫原万叶", Prices: [7]float64{5, 10, 15, 20, 25, 30, 150}, SpecializedWeapon: "苍古自由之誓"},
-		"胡桃":    {Name: "胡桃", Prices: [7]float64{5, 10, 15, 20, 25, 30, 150}, SpecializedWeapon: "护摩之杖"},
-		"甘雨":    {Name: "甘雨", Prices: [7]float64{5, 10, 15, 20, 25, 30, 150}, SpecializedWeapon: "阿莫斯之弓"},
-		"达达利亚":  {Name: "达达利亚", Prices: [7]float64{5, 10, 15, 20, 25, 30, 150}, SpecializedWeapon: "冬极白星"},
-		"钟离":    {Name: "钟离", Prices: [7]float64{5, 10, 15, 20, 25, 30, 150}, SpecializedWeapon: "贯虹之槊"},
-		"魈":     {Name: "魈", Prices: [7]float64{5, 10, 15, 20, 25, 30, 150}, SpecializedWeapon: "和璞鸢"},
-		"可莉":    {Name: "可莉", Prices: [7]float64{5, 10, 15, 20, 25, 30, 100}, SpecializedWeapon: "四风原典"},
-		"温迪":    {Name: "温迪", Prices: [7]float64{5, 10, 15, 20, 25, 30, 180}, SpecializedWeapon: "终末嗟叹之诗"},
-		"菈乌玛":   {Name: "菈乌玛", Prices: [7]float64{5, 10, 80, 90, 100, 200, 400}, SpecializedWeapon: "纺夜天镜"},
-		"菲林斯":   {Name: "菲林斯", Prices: [7]float64{5, 10, 80, 90, 100, 200, 500}, SpecializedWeapon: "血染荒城"},
-		"奈芙尔":   {Name: "奈芙尔", Prices: [7]float64{5, 10, 80, 90, 100, 200, 650}, SpecializedWeapon: "真语秘匣"},
-		"哥伦比娅":  {Name: "哥伦比娅", Prices: [7]float64{5, 10, 80, 90, 100, 200, 500}, SpecializedWeapon: "帷间夜曲"},
-		"兹白":    {Name: "兹白", Prices: [7]float64{5, 10, 80, 90, 100, 200, 550}, SpecializedWeapon: "朏魄含光"},
-		"法尔伽":   {Name: "法尔伽", Prices: [7]float64{5, 10, 80, 90, 100, 200, 600}, SpecializedWeapon: "狼的武功歌"},
+		"闲云":    {Name: "闲云", Prices: [7]float64{3, 6, 20, 25, 30, 50, 150}, SpecializedWeapon: "鹤鸣余音"},
+		"娜维娅":   {Name: "娜维娅", Prices: [7]float64{3, 6, 15, 20, 25, 30, 150}, SpecializedWeapon: "裁断"},
+		"芙宁娜":   {Name: "芙宁娜", Prices: [7]float64{5, 10, 30, 35, 40, 80, 230}, SpecializedWeapon: "静水流涌之辉"},
+		"那维莱特":  {Name: "那维莱特", Prices: [7]float64{5, 10, 15, 20, 25, 80, 260}, SpecializedWeapon: "万世流涌大典"},
+		"莱欧斯利":  {Name: "莱欧斯利", Prices: [7]float64{5, 10, 15, 20, 25, 30, 200}, SpecializedWeapon: "金流监督"},
+		"林尼":    {Name: "林尼", Prices: [7]float64{3, 6, 15, 20, 25, 30, 130}, SpecializedWeapon: "最初的大魔术"},
+		"白术":    {Name: "白术", Prices: [7]float64{3, 6, 15, 20, 25, 30, 130}, SpecializedWeapon: "碧落之珑"},
+		"艾尔海森":  {Name: "艾尔海森", Prices: [7]float64{3, 6, 15, 20, 25, 30, 150}, SpecializedWeapon: "裁叶萃光"},
+		"流浪者":   {Name: "流浪者", Prices: [7]float64{3, 6, 15, 20, 25, 30, 150}, SpecializedWeapon: "图莱杜拉的回忆"},
+		"纳西妲":   {Name: "纳西妲", Prices: [7]float64{3, 6, 15, 20, 25, 30, 130}, SpecializedWeapon: "千夜浮梦"},
+		"赛诺":    {Name: "赛诺", Prices: [7]float64{3, 6, 15, 20, 25, 30, 110}, SpecializedWeapon: "赤沙之杖"},
+		"妮露":    {Name: "妮露", Prices: [7]float64{3, 6, 15, 20, 25, 30, 130}, SpecializedWeapon: "圣显之钥"},
+		"神里绫人":  {Name: "神里绫人", Prices: [7]float64{3, 6, 15, 20, 25, 30, 130}, SpecializedWeapon: "波乱月白经津"},
+		"申鹤":    {Name: "申鹤", Prices: [7]float64{3, 6, 15, 20, 25, 30, 130}, SpecializedWeapon: "息灾"},
+		"夜兰":    {Name: "夜兰", Prices: [7]float64{3, 6, 15, 20, 25, 30, 130}, SpecializedWeapon: "若水"},
+		"八重神子":  {Name: "八重神子", Prices: [7]float64{3, 6, 15, 20, 25, 30, 130}, SpecializedWeapon: "神乐之真意"},
+		"荒泷一斗":  {Name: "荒泷一斗", Prices: [7]float64{3, 6, 15, 20, 25, 30, 130}, SpecializedWeapon: "赤角石溃杵"},
+		"珊瑚宫心海": {Name: "珊瑚宫心海", Prices: [7]float64{3, 6, 15, 20, 25, 30, 130}, SpecializedWeapon: "不灭月华"},
+		"雷电将军":  {Name: "雷电将军", Prices: [7]float64{3, 6, 15, 20, 25, 30, 130}, SpecializedWeapon: "薙草之稻光"},
+		"优菈":    {Name: "优菈", Prices: [7]float64{3, 6, 15, 20, 25, 30, 130}, SpecializedWeapon: "松籁响起之时"},
+		"宵宫":    {Name: "宵宫", Prices: [7]float64{3, 6, 15, 20, 25, 30, 130}, SpecializedWeapon: "飞雷之弦振"},
+		"枫原万叶":  {Name: "枫原万叶", Prices: [7]float64{3, 6, 15, 20, 25, 30, 130}, SpecializedWeapon: "苍古自由之誓"},
+		"胡桃":    {Name: "胡桃", Prices: [7]float64{3, 6, 15, 20, 25, 30, 130}, SpecializedWeapon: "护摩之杖"},
+		"甘雨":    {Name: "甘雨", Prices: [7]float64{3, 6, 15, 20, 25, 30, 130}, SpecializedWeapon: "阿莫斯之弓"},
+		"达达利亚":  {Name: "达达利亚", Prices: [7]float64{3, 6, 15, 20, 25, 30, 130}, SpecializedWeapon: "冬极白星"},
+		"钟离":    {Name: "钟离", Prices: [7]float64{3, 6, 15, 20, 25, 30, 110}, SpecializedWeapon: "贯虹之槊"},
+		"魈":     {Name: "魈", Prices: [7]float64{3, 6, 15, 20, 25, 30, 130}, SpecializedWeapon: "和璞鸢"},
+		"可莉":    {Name: "可莉", Prices: [7]float64{3, 6, 15, 20, 25, 30, 100}, SpecializedWeapon: "四风原典"},
+		"温迪":    {Name: "温迪", Prices: [7]float64{3, 6, 15, 20, 25, 30, 180}, SpecializedWeapon: "黎明破晓之史"},
+		"菈乌玛":   {Name: "菈乌玛", Prices: [7]float64{6, 15, 80, 90, 100, 200, 400}, SpecializedWeapon: "纺夜天镜"},
+		"菲林斯":   {Name: "菲林斯", Prices: [7]float64{8, 20, 80, 90, 100, 200, 400}, SpecializedWeapon: "血染荒城"},
+		"奈芙尔":   {Name: "奈芙尔", Prices: [7]float64{8, 20, 80, 90, 100, 200, 600}, SpecializedWeapon: "真语秘匣"},
+		"杜林":    {Name: "杜林", Prices: [7]float64{5, 10, 60, 70, 80, 150, 400}, SpecializedWeapon: "黑蚀"},
+		"哥伦比娅":  {Name: "哥伦比娅", Prices: [7]float64{5, 10, 80, 90, 100, 150, 380}, SpecializedWeapon: "帷间夜曲"},
+		"兹白":    {Name: "兹白", Prices: [7]float64{5, 10, 80, 90, 100, 200, 500}, SpecializedWeapon: "朏魄含光"},
+		"法尔伽":   {Name: "法尔伽", Prices: [7]float64{5, 10, 80, 90, 100, 200, 500}, SpecializedWeapon: "狼的武功歌"},
 		"莉奈娅":   {Name: "莉奈娅", Prices: [7]float64{5, 10, 80, 90, 100, 200, 500}, SpecializedWeapon: "霜结的誓金枝"},
+		"尼克":    {Name: "尼克", Prices: [7]float64{5, 10, 80, 90, 100, 200, 600}, SpecializedWeapon: "尘光七谕"},
 	}
 
 	// 武器价格表
 	r.Weapons = map[string]WeaponInfo{
-		"黑蚀":      {Name: "黑蚀", Prices: [5]float64{5, 10, 15, 20, 200}}, // 新增武器
-		"支离轮光":    {Name: "支离轮光", Prices: [5]float64{5, 10, 15, 20, 150}},
-		"苍耀":      {Name: "苍耀", Prices: [5]float64{5, 10, 15, 20, 200}}, // 300->200
-		"香韵奏者":    {Name: "香韵奏者", Prices: [5]float64{5, 10, 15, 20, 150}},
-		"溢彩心念":    {Name: "溢彩心念", Prices: [5]float64{5, 10, 15, 20, 250}},
-		"祭星者之望":   {Name: "祭星者之望", Prices: [5]float64{5, 10, 15, 20, 150}},
-		"焚曜千阳":    {Name: "焚曜千阳", Prices: [5]float64{5, 10, 15, 20, 250}}, // 300->250
-		"星鹫赤羽":    {Name: "星鹫赤羽", Prices: [5]float64{5, 10, 15, 20, 250}}, // 300->250
-		"岩峰巡歌":    {Name: "岩峰巡歌", Prices: [5]float64{5, 10, 15, 20, 100}},
-		"山王长牙":    {Name: "山王长牙", Prices: [5]float64{5, 10, 15, 20, 150}},
-		"冲浪时光":    {Name: "冲浪时光", Prices: [5]float64{5, 10, 15, 20, 150}},
-		"柔灯挽歌":    {Name: "柔灯挽歌", Prices: [5]float64{5, 10, 15, 20, 50}},
-		"赦罪":      {Name: "赦罪", Prices: [5]float64{5, 10, 15, 20, 150}},
-		"赤月之形":    {Name: "赤月之形", Prices: [5]float64{5, 10, 15, 20, 200}},
-		"白雨心弦":    {Name: "白雨心弦", Prices: [5]float64{5, 10, 15, 20, 50}},
-		"有乐御簾切":   {Name: "有乐御簾切", Prices: [5]float64{5, 10, 15, 20, 150}},
-		"鹤鸣余音":    {Name: "鹤鸣余音", Prices: [5]float64{5, 10, 15, 20, 50}},
-		"裁断":      {Name: "裁断", Prices: [5]float64{5, 10, 15, 20, 50}},
-		"静水流涌之辉":  {Name: "静水流涌之辉", Prices: [5]float64{5, 10, 15, 20, 100}},
-		"万世流涌大典":  {Name: "万世流涌大典", Prices: [5]float64{5, 10, 15, 20, 150}},
-		"金流监督":    {Name: "金流监督", Prices: [5]float64{5, 10, 15, 20, 80}},
-		"最初的大魔术":  {Name: "最初的大魔术", Prices: [5]float64{5, 10, 15, 20, 50}},
-		"碧落之珑":    {Name: "碧落之珑", Prices: [5]float64{5, 10, 15, 20, 50}},
-		"裁叶萃光":    {Name: "裁叶萃光", Prices: [5]float64{5, 10, 15, 20, 25}},
-		"图莱杜拉的回忆": {Name: "图莱杜拉的回忆", Prices: [5]float64{5, 10, 15, 20, 25}},
-		"千夜浮梦":    {Name: "千夜浮梦", Prices: [5]float64{5, 10, 15, 20, 25}},
-		"赤沙之杖":    {Name: "赤沙之杖", Prices: [5]float64{5, 10, 15, 20, 25}},
-		"圣显之钥":    {Name: "圣显之钥", Prices: [5]float64{5, 10, 15, 20, 25}},
-		"波乱月白经津":  {Name: "波乱月白经津", Prices: [5]float64{5, 10, 15, 20, 25}},
-		"息灾":      {Name: "息灾", Prices: [5]float64{5, 10, 15, 20, 25}},
-		"若水":      {Name: "若水", Prices: [5]float64{5, 10, 15, 20, 25}},
-		"神乐之真意":   {Name: "神乐之真意", Prices: [5]float64{5, 10, 15, 20, 25}},
-		"赤角石溃杵":   {Name: "赤角石溃杵", Prices: [5]float64{5, 10, 15, 20, 25}},
-		"不灭月华":    {Name: "不灭月华", Prices: [5]float64{5, 10, 15, 20, 25}},
-		"薙草之稻光":   {Name: "薙草之稻光", Prices: [5]float64{5, 10, 15, 20, 25}},
-		"松籁响起之时":  {Name: "松籁响起之时", Prices: [5]float64{5, 10, 15, 20, 25}},
-		"飞雷之弦振":   {Name: "飞雷之弦振", Prices: [5]float64{5, 10, 15, 20, 25}},
-		"苍古自由之誓":  {Name: "苍古自由之誓", Prices: [5]float64{5, 10, 15, 20, 25}},
-		"护摩之杖":    {Name: "护摩之杖", Prices: [5]float64{5, 10, 15, 20, 25}},
-		"阿莫斯之弓":   {Name: "阿莫斯之弓", Prices: [5]float64{5, 5, 5, 5, 25}},
-		"冬极白星":    {Name: "冬极白星", Prices: [5]float64{5, 10, 15, 20, 25}},
-		"贯虹之槊":    {Name: "贯虹之槊", Prices: [5]float64{5, 5, 5, 5, 25}},
-		"和璞鸢":     {Name: "和璞鸢", Prices: [5]float64{5, 5, 5, 5, 25}},
-		"四风原典":    {Name: "四风原典", Prices: [5]float64{5, 5, 5, 5, 25}},
-		"终末嗟叹之诗":  {Name: "终末嗟叹之诗", Prices: [5]float64{5, 5, 5, 5, 25}},
-		"纺夜天镜":    {Name: "纺夜天镜", Prices: [5]float64{5, 10, 15, 20, 100}},
-		"血染荒城":    {Name: "血染荒城", Prices: [5]float64{5, 10, 15, 20, 250}},
-		"真语秘匣":    {Name: "真语秘匣", Prices: [5]float64{5, 10, 15, 20, 200}},
-		"帷间夜曲":    {Name: "帷间夜曲", Prices: [5]float64{5, 10, 15, 20, 200}}, // 新增
-		"朏魄含光":    {Name: "朏魄含光", Prices: [5]float64{5, 10, 15, 20, 250}},
-		"狼的武功歌":   {Name: "狼的武功歌", Prices: [5]float64{5, 10, 15, 20, 200}},
-		"霜结的誓金枝":  {Name: "霜结的誓金枝", Prices: [5]float64{5, 10, 15, 20, 200}},
+		"支离轮光":    {Name: "支离轮光", Prices: [5]float64{6, 12, 18, 50, 150}},
+		"苍耀":      {Name: "苍耀", Prices: [5]float64{6, 12, 18, 50, 200}},
+		"香韵奏者":    {Name: "香韵奏者", Prices: [5]float64{5, 10, 15, 50, 150}},
+		"溢彩心念":    {Name: "溢彩心念", Prices: [5]float64{5, 10, 15, 50, 200}},
+		"祭星者之望":   {Name: "祭星者之望", Prices: [5]float64{5, 10, 15, 50, 150}},
+		"焚曜千阳":    {Name: "焚曜千阳", Prices: [5]float64{5, 10, 15, 50, 200}},
+		"星鹫赤羽":    {Name: "星鹫赤羽", Prices: [5]float64{5, 10, 15, 50, 200}},
+		"岩峰巡歌":    {Name: "岩峰巡歌", Prices: [5]float64{5, 10, 15, 50, 100}},
+		"山王长牙":    {Name: "山王长牙", Prices: [5]float64{5, 10, 15, 50, 150}},
+		"冲浪时光":    {Name: "冲浪时光", Prices: [5]float64{5, 10, 15, 50, 150}},
+		"柔灯挽歌":    {Name: "柔灯挽歌", Prices: [5]float64{3, 6, 9, 15, 50}},
+		"赦罪":      {Name: "赦罪", Prices: [5]float64{5, 10, 15, 50, 150}},
+		"赤月之形":    {Name: "赤月之形", Prices: [5]float64{5, 10, 15, 50, 150}},
+		"白雨心弦":    {Name: "白雨心弦", Prices: [5]float64{3, 6, 9, 15, 50}},
+		"有乐御簾切":   {Name: "有乐御簾切", Prices: [5]float64{5, 10, 15, 50, 120}},
+		"鹤鸣余音":    {Name: "鹤鸣余音", Prices: [5]float64{3, 6, 9, 15, 50}},
+		"裁断":      {Name: "裁断", Prices: [5]float64{3, 6, 9, 15, 50}},
+		"静水流涌之辉":  {Name: "静水流涌之辉", Prices: [5]float64{5, 10, 15, 40, 100}},
+		"万世流涌大典":  {Name: "万世流涌大典", Prices: [5]float64{5, 10, 15, 50, 150}},
+		"金流监督":    {Name: "金流监督", Prices: [5]float64{5, 10, 15, 30, 80}},
+		"最初的大魔术":  {Name: "最初的大魔术", Prices: [5]float64{3, 6, 9, 15, 25}},
+		"碧落之珑":    {Name: "碧落之珑", Prices: [5]float64{3, 6, 9, 15, 25}},
+		"裁叶萃光":    {Name: "裁叶萃光", Prices: [5]float64{3, 6, 9, 15, 25}},
+		"图莱杜拉的回忆": {Name: "图莱杜拉的回忆", Prices: [5]float64{3, 6, 9, 15, 25}},
+		"千夜浮梦":    {Name: "千夜浮梦", Prices: [5]float64{3, 6, 9, 15, 25}},
+		"赤沙之杖":    {Name: "赤沙之杖", Prices: [5]float64{3, 6, 9, 15, 25}},
+		"圣显之钥":    {Name: "圣显之钥", Prices: [5]float64{3, 6, 9, 15, 25}},
+		"波乱月白经津":  {Name: "波乱月白经津", Prices: [5]float64{3, 6, 9, 15, 25}},
+		"息灾":      {Name: "息灾", Prices: [5]float64{3, 6, 9, 15, 25}},
+		"若水":      {Name: "若水", Prices: [5]float64{3, 6, 9, 15, 25}},
+		"神乐之真意":   {Name: "神乐之真意", Prices: [5]float64{3, 6, 9, 15, 25}},
+		"赤角石溃杵":   {Name: "赤角石溃杵", Prices: [5]float64{3, 6, 9, 15, 25}},
+		"不灭月华":    {Name: "不灭月华", Prices: [5]float64{3, 6, 9, 15, 25}},
+		"薙草之稻光":   {Name: "薙草之稻光", Prices: [5]float64{3, 6, 9, 15, 25}},
+		"松籁响起之时":  {Name: "松籁响起之时", Prices: [5]float64{3, 6, 9, 15, 25}},
+		"飞雷之弦振":   {Name: "飞雷之弦振", Prices: [5]float64{3, 6, 9, 15, 25}},
+		"苍古自由之誓":  {Name: "苍古自由之誓", Prices: [5]float64{3, 6, 9, 15, 25}},
+		"护摩之杖":    {Name: "护摩之杖", Prices: [5]float64{3, 6, 9, 15, 25}},
+		"阿莫斯之弓":   {Name: "阿莫斯之弓", Prices: [5]float64{3, 6, 9, 15, 25}},
+		"冬极白星":    {Name: "冬极白星", Prices: [5]float64{3, 6, 9, 15, 25}},
+		"贯虹之槊":    {Name: "贯虹之槊", Prices: [5]float64{3, 3, 3, 3, 25}},
+		"和璞鸢":     {Name: "和璞鸢", Prices: [5]float64{3, 3, 3, 3, 25}},
+		"四风原典":    {Name: "四风原典", Prices: [5]float64{0, 0, 0, 0, 0}},
+		"黎明破晓之史":  {Name: "黎明破晓之史", Prices: [5]float64{5, 10, 15, 20, 25}},
+		"纺夜天镜":    {Name: "纺夜天镜", Prices: [5]float64{6, 12, 18, 40, 100}},
+		"血染荒城":    {Name: "血染荒城", Prices: [5]float64{8, 16, 24, 50, 200}},
+		"真语秘匣":    {Name: "真语秘匣", Prices: [5]float64{5, 10, 15, 80, 250}},
+		"黑蚀":      {Name: "黑蚀", Prices: [5]float64{5, 10, 15, 50, 150}},
+		"帷间夜曲":    {Name: "帷间夜曲", Prices: [5]float64{5, 10, 15, 50, 200}},
+		"朏魄含光":    {Name: "朏魄含光", Prices: [5]float64{5, 10, 15, 50, 250}},
+		"狼的武功歌":   {Name: "狼的武功歌", Prices: [5]float64{5, 10, 15, 50, 200}},
+		"霜结的誓金枝":  {Name: "霜结的誓金枝", Prices: [5]float64{5, 10, 15, 50, 200}},
+		"尘光七谕":    {Name: "尘光七谕", Prices: [5]float64{5, 10, 15, 50, 200}},
 	}
 
 	// 完整溢价组合 [cite: 25-175, 177-184]
@@ -193,36 +195,37 @@ func loadValuationRules() ValuationRules {
 		return r.Combos[i].Value > r.Combos[j].Value
 	})
 
-	// 角色数量乘数规则（未变动）
+	// 角色数量乘数规则
 	r.CharCountMultiplierTiers = []struct {
 		MinCount int
 		MaxCount int
 		Factor   float64
 	}{
 		{0, 10, 0.6}, {11, 20, 0.8}, {21, 39, 1.0},
-		{40, 45, 1.2}, {46, 50, 1.4}, {51, 999, 1.6},
+		{40, 45, 1.2}, {46, 50, 1.4}, {51, 60, 1.6}, {61, 70, 2.5},
 	}
 
-	// 资源价值规则 [cite: 396-404]
+	// 资源价值规则
 	r.ResourceValueTiers = []struct {
 		MinFates int
 		Price    float64
 	}{
-		{1000, 1.7},
-		{900, 1.6},
-		{800, 1.5},
-		{700, 1.4},
-		{600, 1.3},
-		{500, 1.2},
-		{300, 1.0},
+		{1000, 1.6},
+		{900, 1.5},
+		{800, 1.4},
+		{700, 1.3},
+		{600, 1.2},
+		{500, 1.1},
+		{400, 1.0},
+		{300, 0.8},
 		{200, 0.5},
+		{100, 0.2},
 	}
 
 	// 特殊规则相关角色列表
-	// 第一梯队热门6命角色 (+300，但命中月国满命溢价时不再+300)
-	r.HotC6CharsT1 = []string{"杜林", "奈芙尔", "菈乌玛", "菲林斯", "哥伦比娅", "兹白", "法尔伽"}
-	// 第二梯队热门6命角色 (+200)
-	r.HotC6CharsT2 = []string{"基尼奇", "瓦雷莎", "克洛琳德", "玛拉妮"}
+	// 热门定向溢价6命角色 (+200)
+	r.HotC6CharsT1 = []string{"杜林", "法尔伽", "瓦雷莎"}
+	r.HotC6CharsT2 = []string{} // 不再有第二梯队
 	r.SpecialC2C5Chars = []string{"茜特菈莉", "希诺宁", "爱可菲", "哥伦比娅", "菈乌玛", "伊涅芙", "莉奈娅"}
 
 	return r
@@ -392,8 +395,8 @@ func calculateBaseValue(account eval.Assets, bestRules []ComboRule) (applicableV
 		}
 
 		if refine == 5 && ownerName != "" && premiumC6Chars[ownerName] {
-			value *= 2
-			reason += " (命中组合内6命角色专武, 价格x2)"
+			value *= 1.5
+			reason += " (命中组合内6命角色专武, 价格x1.5)"
 		}
 
 		if c6CharWeapons[name] {
@@ -474,8 +477,8 @@ func calculateResourceValue(account eval.Assets) (float64, string) {
 	var sb strings.Builder
 	fmt.Fprintf(&sb, "账号总资源: %d 原石 + %d 纠缠之源 = %d 总抽数\n", account.YuanShi, account.JiuChanZhiYuan, totalFates)
 
-	if totalFates < 200 {
-		sb.WriteString("总抽数低于200，不计价。\n")
+	if totalFates < 100 {
+		sb.WriteString("总抽数低于100，不计价。\n")
 		return 0, sb.String()
 	}
 
@@ -553,39 +556,8 @@ func applySpecialRules(account eval.Assets, bestRules []ComboRule) (float64, str
 	}
 
 	if hasMaxConstCombo(bestRules) {
-		// 收集命中了月国满命溢价组合的角色
-		yueguoChars := make(map[string]bool)
-		for _, combo := range bestRules {
-			// 月国组合的特征：包含奈芙尔/菲林斯/哥伦比娅/兹白/伊涅芙/菈乌玛等月国角色的满命组合
-			isYueguoCombo := false
-			for _, req := range combo.RequiredChars {
-				if req.MinConst == 6 {
-					switch req.Name {
-					case "奈芙尔", "菲林斯", "哥伦比娅", "兹白", "伊涅芙", "菈乌玛", "莉奈娅":
-						isYueguoCombo = true
-					}
-				}
-			}
-			if isYueguoCombo {
-				for _, req := range combo.RequiredChars {
-					yueguoChars[req.Name] = true
-				}
-			}
-		}
-
-		// 第一梯队: +300，但已命中月国满命溢价组合的角色不再+300
+		// 热门定向溢价6命角色: +200
 		for _, hotChar := range rules.HotC6CharsT1 {
-			if constellation, ok := account.Characters[hotChar]; ok && constellation == 6 {
-				if yueguoChars[hotChar] {
-					fmt.Fprintf(&sb, "  - 热门6命角色 [%s] 已命中月国满命溢价组合，不再额外+300\n", hotChar)
-				} else {
-					totalBonus += 300
-					fmt.Fprintf(&sb, "  - 命中热门6命角色 [%s]，附加价值 +300\n", hotChar)
-				}
-			}
-		}
-		// 第二梯队: +200
-		for _, hotChar := range rules.HotC6CharsT2 {
 			if constellation, ok := account.Characters[hotChar]; ok && constellation == 6 {
 				totalBonus += 200
 				fmt.Fprintf(&sb, "  - 命中热门6命角色 [%s]，附加价值 +200\n", hotChar)

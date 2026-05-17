@@ -78,12 +78,12 @@ func TestCalculateValuation_Example(t *testing.T) {
 	fmt.Printf("Final Total: %.2f\n", result.FinalTotal)
 
 	// Updated for new prices:
-	// Char: 500 + 400 + 380 = 1280
-	// Weapons (doubled, hit combo): 250*2 + 150*2 + 150*2 = 500 + 300 + 300 = 1100
-	// Combo (6玛薇卡+6茜特菈莉): 300
-	// Special (6基尼奇 HotC6T2): +200
-	// Total = 1280 + 1100 + 300 + 200 = 2880
-	if result.FinalTotal < 2800 {
-		t.Errorf("Expected > 2800, got %.2f", result.FinalTotal)
+	// Char: 500 + 350 + 300 = 1150
+	// Weapons (x1.5 for combo chars): 200*1.5 + 150*1.5 + 150 = 300 + 225 + 150 = 675
+	// Combo (6玛薇卡+6茜特菈莉): 200
+	// Special: 基尼奇 not in hot list anymore = 0
+	// Total = 1150 + 675 + 200 + 0 = 2025
+	if result.FinalTotal < 2000 {
+		t.Errorf("Expected > 2000, got %.2f", result.FinalTotal)
 	}
 }
